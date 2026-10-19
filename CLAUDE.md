@@ -29,7 +29,7 @@ Never read or print a secret value. Inject at runtime, never by reading the valu
 Beads (`bd`) is the source of truth for development work in repos. Fields, discipline and what goes where: the `beads` rule.
 
 ## Memory hygiene (context budget)
-Keep always-on context lean. Targets: this file < 5k · project CLAUDE.md < 5k · MEMORY.md under 200 lines and 25 KB (only that much loads), entries ≤150 chars (retire to `ARCHIVED.md`). Domain detail belongs in a path-scoped `~/.claude/rules/*.md`, not here; don't duplicate hook-enforced or skill-covered facts. **A correction to a rule edits the rule's home file. Memory is only for knowledge with no other home.** When vault/CLI/sessions feel off, run `/braynee:health`.
+Keep always-on context lean. Targets: this file < 5k · project CLAUDE.md < 5k · MEMORY.md under 200 lines and 25 KB (only that much loads), entries ≤150 chars (retire to `ARCHIVED.md`). Domain detail belongs in a path-scoped `~/.claude/rules/*.md`, not here; don't duplicate hook-enforced or skill-covered facts. **A correction to a rule edits the rule's home file. Memory is only for knowledge with no other home.** Every change to this config layer (CLAUDE.md, rules, agents, hooks, settings) gets a dated entry with the why in the vault's `2. Areas/Claude Code/Configuration Changelog.md`; git in `~/.claude` holds the diff. When vault/CLI/sessions feel off, run `/braynee:health`.
 
 ## Braynee
 Local CC plugin: Obsidian vault + skills as a second brain. Reach for: `/braynee:health`, `/braynee:query`, `/braynee:recap`, `/braynee:pour`, `/braynee:daily`.
