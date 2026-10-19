@@ -53,14 +53,7 @@ npx skills update -g          # they move; refresh rather than assume
 
 ## The docs MCP server, when a project needs one
 
-Mastra's documented config is `npx -y @mastra/mcp-docs-server@latest`. **It does
-not work on this machine** — measured at 43.9s to hand off with a warm cache,
-against Claude Code's 30s connect timeout, so it fails every session. Install the
-package and call its declared bin instead:
-
-```bash
-npm i -D @mastra/mcp-docs-server
-```
+Use Mastra's documented config:
 
 ```json
 {
@@ -68,7 +61,7 @@ npm i -D @mastra/mcp-docs-server
     "mastra-docs": {
       "type": "stdio",
       "command": "npx",
-      "args": ["mcp-docs-server"]
+      "args": ["-y", "@mastra/mcp-docs-server@latest"]
     }
   }
 }

@@ -50,9 +50,14 @@ worked, squash it before merge.
 
 ## Branches
 
-`feature/`, `fix/`, `chore/` — prefixed by type. **Never commit straight to
-`main`/`master`.** (Some repos intentionally ship direct-to-main; those opt out
-explicitly rather than by habit.)
+`<type>/<issue-id>-<slug>` — the type is the work's type, the same one its commit
+and its beads issue carry: `feat/` (or `feature/`), `fix/`, `chore/`, `refactor/`,
+`docs/`, `test/`, `hotfix/`, `spike/` (time-boxed investigation). The issue id ties
+the branch to the beads issue, which every PR needs (create or claim it before
+code, name it in the PR body, close it on merge). **Never commit product work
+straight to `main`/`master`.** Direct-to-main repos (plugin repos, the vault,
+repairs to broken agent tooling) are listed in the user CLAUDE.md, not decided by
+habit.
 
 ## Grouping a PR
 

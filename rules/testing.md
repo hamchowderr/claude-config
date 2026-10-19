@@ -16,7 +16,7 @@ Pyramid: lots of Vitest → some Supertest → few Playwright; AIMock alongside 
 ## Execution tiers (mocked first, live gated)
 - **Tier 1 — always-green:** `npm test` — Vitest + Supertest, fully mocked (AIMock for LLM, supabase-js chain mock for DB). No network/server. Pre-commit + CI.
 - **Tier 2 — live DB:** `npx supabase start`, then the live config; auto-skip when Supabase unreachable.
-- **Tier 3 — live server / protocols (A2A, MCP):** build + start (Windows: `mastra dev` hangs → `mastra build` + start); tests auto-detect & skip otherwise.
+- **Tier 3 — live server / protocols (A2A, MCP):** build + start; tests auto-detect & skip otherwise.
 - **Tier 4 — real external SDK / API:** gated behind explicit creds; provide read-only (safe) vs write (side-effect) variants.
 - **E2E (Playwright):** `npm run test:e2e` against a running app, with AIMock serving any LLM calls.
 
@@ -29,10 +29,10 @@ Real API keys are the **last** tier, never the first — exercise the whole pipe
 - Skip list: **Jest** (use Vitest) · **Cypress** (use Playwright) · Storybook-for-tests (use Playwright component testing).
 
 ## Verify before calling a change "done"
-Asserting logic is **not** proving behavior. Run BOTH layers — skipping the second is the gap that shipped the braynee `if`-field hook bug:
+Asserting logic is **not** proving behavior. Run BOTH layers — skipping the second is how a hook bug once shipped with green tests:
 1. **Logic** — run the relevant tests / self-test (`npm test`, project self-test). Green means the code does what the unit claims.
 2. **Behavior** — exercise the change through the REAL path it runs in (the running app, a live session, the actual CLI), not a synthetic harness. Confirm the observable effect, not just a return value.
-- **braynee hooks specifically:** (1) `node bin/braynee-self-test` (headless assertions), THEN (2) `node scripts/hook-sandbox.mjs` → a live `--plugin-dir` session, and confirm the hook actually fired in `~/.claude/braynee-hooks.log`. A stdin-piping test cannot see the CC↔hooks.json boundary.
+- **Hooks:** a stdin-piping test cannot see the boundary between Claude Code and `hooks.json`. Confirm the hook fired in a live session. Repo-specific steps live in that repo's own instructions.
 - **Report honestly:** if you only ran layer 1, say so — don't narrate a change as verified when only its logic was checked.
 
 ## Before review

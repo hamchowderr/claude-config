@@ -10,20 +10,20 @@ Secret values flow **user → vault → process env**. They must never land in t
 
 ## Reading / using secrets
 - Inject at runtime; never read a value into tool output.
-  - **Infisical:** `infisical run --path=/<project> --silent -- <cmd>` (injects that project's folder + the `/shared` set it imports). **Never `--recursive`** — it over-injects every project's keys (retired 2026-06-28 when otaku-internal went per-project). Exception: a project with no folder yet can still use `--recursive`. On Windows run from PowerShell — Git Bash mangles a leading-slash `--path`.
+  - **Infisical:** `infisical run --path=/<project> --silent -- <cmd>` (injects that project's folder + the `/shared` set it imports). **Never `--recursive`** — it over-injects every project's keys (retired 2026-06-28 when otaku-internal went per-project). Exception: a project with no folder yet can still use `--recursive`. otaku-internal is per-project (id `e56e0da5-6460-4bab-bdd6-2fd12ac5447b`, env `dev`).
   - **Agent Vault** (self-hosted broker on the VPS): route secret-needing CLIs through it via a manual `HTTPS_PROXY` — `agent-vault run` is broken here (control-plane :443 and proxy :14322 are split hosts). Recipe:
     ```bash
     NODE_USE_ENV_PROXY=1 NODE_EXTRA_CA_CERTS="C:/Users/HamCh/.agent-vault/vps-ca.pem" \
     HTTPS_PROXY="http://$AVT:broker@100.97.92.73:14322" HTTP_PROXY="http://$AVT:broker@100.97.92.73:14322" <cli>
     ```
-    Gotchas: scheme is `http://` (not https, since v0.26.2) · vault is `broker` (not `default`) · host is the Tailscale IP (not the domain) · `$AVT` = long-lived agent token at Infisical `otaku-internal/agent-vault/AGENT_VAULT_AGENT_TOKEN_CLAUDE_CODE` · Windows curl needs `-k --proxy-insecure` (or run it from WSL). Full detail: vault [[Agent Vault]].
+    Gotchas: scheme is `http://` (not https, since v0.26.2) · vault is `broker` (not `default`) · host is the Tailscale IP (not the domain) · `$AVT` = long-lived agent token at Infisical `otaku-internal/agent-vault/AGENT_VAULT_AGENT_TOKEN_CLAUDE_CODE`. Full detail: vault [[Agent Vault]].
 - Never run value-printing commands: `infisical secrets`, `infisical secrets get`, `infisical export`. The PreToolUse hook denies these.
 - To confirm a secret exists, print a MASK only (type / length / first chars). To find one, list folder NAMES only. Value-safe name check: `infisical run --path=/<project> --silent -- pwsh -NoProfile -c '(Get-ChildItem Env:).Name'`.
 
 ## Adding / writing secrets
 - Never type a raw secret literal — it lands in the transcript. Write only by reference to an already-injected var: `infisical secrets set NEWKEY="$EXISTING"`.
 - Brand-new secret values are added by the user (Infisical UI / Agent Vault). From then on, propagate by reference only.
-- `.env` / `.env.local`: key names + placeholders (`YOUR_KEY_HERE`) only. Real values inject at runtime — never commit or write them to disk.
+- `.env` / `.env.local`: reading them is fine. When creating one, key names + placeholders (`YOUR_KEY_HERE`) only. Real values inject at runtime — never commit or write them to disk.
 
 ## Environments and keys contract (added 2026-09-21 after the Fire Enrich setup slipped)
 - **Every project gets its folder in all three Infisical environments, always:** `dev` = this machine · `staging` = Vercel *preview* deploys (the "preview live" DoD target) · `prod` = Vercel production. Creating only dev and prod is a defect. Staging gets its own databases (`<name>_staging`), never prod's.

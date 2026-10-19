@@ -9,7 +9,7 @@ Sensible defaults for development work. Deviate only with a concrete reason — 
 
 ## Vault-first — check it before deciding, asking, or guessing
 The vault is the source of truth for the stack, conventions, and tool docs below. Before asking the user a stack/architecture/convention question or assuming an answer, **search the vault** — the answer is almost always already there.
-- Search with QMD (the only search tool — never grep/find/Glob the vault): `node ~/.claude/scripts/qmd-wrapper.mjs <cmd>` — `search "terms"` (BM25, exact), structured `query $'intent: …\nlex: …\nvec: …\nhyde: …'` (hybrid, you write the fields), `vsearch "concept"` (vectors), then `get "#docid"` / `multi-get "#a,#b"` to read the source you cite. The `qmd` skill carries the full doctrine. → Vault: `2. Areas/Development/Tooling/QMD/`
+- Search with QMD (the only search tool — never grep/find/Glob the vault): the QMD wrapper (path in the `machine` rule) — `search "terms"` (BM25, exact), structured `query $'intent: …\nlex: …\nvec: …\nhyde: …'` (hybrid, you write the fields), `vsearch "concept"` (vectors), then `get "#docid"` / `multi-get "#a,#b"` to read the source you cite. The `qmd` skill carries the full doctrine. → Vault: `2. Areas/Development/Tooling/QMD/`
 - The `→ Vault:` paths below are canonical reference docs — read them on demand before deciding.
 
 General: run a tool's `--help` before writing code against it; prefer the CLI over MCP when both exist; reach for a CLI before a web dashboard.
@@ -34,7 +34,7 @@ Dolt and Supabase/Convex are not interchangeable; they solve different problems.
 
 ## Frontend / UI → shadcn (registry + UI Kit)
 - Components are shadcn/ui. Before pulling a community component, check the **Otaku registry** for a patched version: `npx shadcn@latest add https://otaku-registry.vercel.app/r/<item>.json` (hosts upstream-bug-fixed components, e.g. `platform-kit-nextjs`; add `--overwrite` to replace a broken upstream install).
-- **Reuse before building:** source dashboards, app screens, pages, and components from the **Shadcn UI Kit** catalog (`C:/Users/HamCh/Code/shadcn-ui-kit`, Next.js 16 / React 19 / Tailwind 4) rather than hand-rolling.
+- **Reuse before building:** source dashboards, app screens, pages, and components from the **Shadcn UI Kit** catalog (folder in the `machine` rule; Next.js 16 / React 19 / Tailwind 4) rather than hand-rolling.
 → Vault: `2. Areas/Development/DevOps/Vercel/Otaku shadcn Registry.md` (registry) · `…/Vercel/shadcn UI Kit.md` (UI Kit catalog)
 
 ## Linting / formatting → Biome
