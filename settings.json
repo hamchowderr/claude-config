@@ -550,26 +550,26 @@
   "autoMode": {
     "allow": [
       "$defaults",
-      "Bash(bd:*) in this repo — routine task-tracker reads/writes per CLAUDE.md workflow",
-      "Bash(qmd:*) in this repo — mandatory vault search tool per CLAUDE.md, never grep/find/Glob the vault",
-      "Bash(obsidian:*) in this repo — required CLI for all vault file writes per CLAUDE.md"
+      "Bash(bd:*) — routine beads task-tracker reads and writes",
+      "Bash(qmd:*) — the mandatory vault search tool",
+      "Bash(obsidian:*) — the required CLI for vault file writes"
     ],
     "soft_deny": [
       "$defaults",
-      "Bash(infisical secrets:*) / Bash(infisical export:*) / Bash(infisical get:*) in this repo — CLAUDE.md explicitly forbids reading/printing secret values, only `infisical run` is sanctioned",
-      "Bash(git push origin main) / Bash(git push origin master) in this repo — CLAUDE.md mandates branch-based workflow, direct push to main/master is disallowed absent explicit override"
+      "Bash(infisical secrets:*) / Bash(infisical export:*) / Bash(infisical get:*) — never read or print secret values; only `infisical run` is sanctioned",
+      "Bash(git push origin main) / Bash(git push origin master) in product repos — product work goes branch + PR + user merge. NOT a violation in: the Obsidian vault (hamchowderr/obsidian-vault), the user config repo (hamchowderr/claude-config), Claude Code plugin repos (braynee, beads, insightful), or a repair to agent tooling Claude broke (.mcp.json, hooks, scripts)"
     ],
     "environment": [
       "### Org-wide",
-      "**Organization**: None configured — this repo (`hamchowderr/obsidian-vault`) is a personal Obsidian vault; no company/org affiliation configured in tooling",
+      "**Organization**: None — personal account (Otaku Solutions owner); no company org in tooling",
       "**Cloud provider(s)**: None configured",
-      "**Repository visibility**: Private — hamchowderr/obsidian-vault (confirmed via gh)",
+      "**Repository visibility**: Mostly private repos under github.com/hamchowderr; some OSS",
       "**Internal sharing / snippet hosting**: None configured — treat public paste/gist services as outside the trust boundary",
       "**Secrets management**: Infisical — inject at runtime only (`infisical run --path=/<project> --silent -- <cmd>`); never `infisical secrets/get/export`, never `--recursive`; never read or print secret values, confirm presence by mask only (type/length/first chars)",
-      "**Default / protected branches**: `main` (default). Protected branches: none listed via gh; Rulesets not queryable here — do not treat as unprotected on that basis. CLAUDE.md states: never push directly to `main`/`master`, always branch (`feature/`/`fix/`/`chore/`), with a stated exception for certain CC plugin repos (unverified provenance, repo-doc only — not adopted as a trust fact for this repo)",
+      "**Default / protected branches**: `main`. Product repos: never push to main, branch + PR. Direct-to-main is the established workflow in the Obsidian vault repo, the claude-config repo, Claude Code plugin repos (braynee, beads, insightful) and for repairs to broken agent tooling",
       "**CI/CD deploy targets**: None configured",
       "**Network posture**: None configured",
-      "**Source control**: The trusted repo (hamchowderr/obsidian-vault) and its remote(s) only — no additional orgs configured",
+      "**Source control**: github.com/hamchowderr repos and their remotes",
       "**Trusted internal domains**: None configured",
       "**Trusted cloud buckets**: None configured",
       "**Key internal services**: instatic.otakusolutions.io, sandbox.otakusolutions.io (config-derived — not a confirmed upload destination; uploads of local data still require confirmation)",
