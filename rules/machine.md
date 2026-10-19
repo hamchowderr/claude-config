@@ -14,6 +14,7 @@ Facts true only on this PC. Never packaged or shared. Check again after a tool u
 - Code: `C:\Users\HamCh\code`. braynee source: `C:\Users\HamCh\code\braynee`.
 - shadcn UI Kit catalog: `C:\Users\HamCh\Code\shadcn-ui-kit`.
 - QMD wrapper: `~/.claude/scripts/qmd-wrapper.mjs`.
+- Workspace junctions in `C:\Users\HamCh\code\workspace\` point to real project roots. Manage them ONLY with `workspace-swap.ps1`; never `rm`, `rmdir`, `mv`, `cp` or `git rm` on them.
 
 ## Known local limits
 - `mastra dev` hangs: use `mastra build` + start.

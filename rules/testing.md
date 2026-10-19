@@ -1,6 +1,12 @@
 ---
 paths:
-  - "C:/Users/HamCh/code/**"
+  - "**/*.test.*"
+  - "**/*.spec.*"
+  - "**/vitest.config.*"
+  - "**/playwright.config.*"
+  - "**/tests/**"
+  - "**/__tests__/**"
+  - "**/e2e/**"
 ---
 
 # Testing

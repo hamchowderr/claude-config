@@ -1,6 +1,8 @@
 ---
 paths:
-  - "C:/Users/HamCh/code/**"
+  - "**/vercel.json"
+  - "**/.vercel/**"
+  - "**/.github/workflows/**"
 ---
 
 # Ship Pipeline — Definition of Done

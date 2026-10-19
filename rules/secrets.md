@@ -1,7 +1,8 @@
 ---
 paths:
-  - "C:/Users/HamCh/code/**"
   - "**/.env*"
+  - "**/*.env"
+  - "**/.infisical*"
 ---
 
 # Secrets — never expose, always inject

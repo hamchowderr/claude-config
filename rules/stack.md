@@ -1,6 +1,13 @@
 ---
 paths:
-  - "C:/Users/HamCh/code/**"
+  - "**/package.json"
+  - "**/*.ts"
+  - "**/*.tsx"
+  - "**/*.js"
+  - "**/*.jsx"
+  - "**/*.mjs"
+  - "**/biome.json"
+  - "**/components.json"
 ---
 
 # Dev Defaults

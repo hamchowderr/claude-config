@@ -1,6 +1,7 @@
 ---
 paths:
-  - "C:/Users/HamCh/code/**"
+  - "**/mastra/**"
+  - "**/*mastra*"
 ---
 
 # Mastra — the standing setup
