@@ -18,6 +18,10 @@ decide everything: *"Is this trackable work?"* and *"Could I resume it in 2 week
 | An **ephemeral** single-session checklist | **TodoWrite** (lost after the session, by design) |
 | **Personal / preference / reference / cross-project** knowledge | **vault** (Claude Memory / notes) |
 
+**Beads is for product work in this repo only.** Before `bd create`, ask: is this a
+change to the product in this repo? Vault chores, ops and personal housekeeping never
+become beads issues; do them, or tell the user. A slipped-in one: `bd delete <id> --force`.
+
 Don't put work in TodoWrite (it dies on compaction). Don't put insights or
 preferences in issues. And don't over-file — if a 2-weeks-away you wouldn't need
 it, it's probably TodoWrite, not a bead.
