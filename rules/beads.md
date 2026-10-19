@@ -64,7 +64,7 @@ names, private repos, or internal business context.
   the Dolt history.
 
 ## Discipline
-- **Before coding** in a beads repo: `bd list --status in_progress` → else `bd ready` → claim atomically (`bd update <id> --claim`). Don't invent work.
+- **Before coding** in a beads repo: `bd list --status in_progress` → else `bd ready` → claim atomically (`bd update <id> --claim`). Don't invent work. Check the cwd is the repo's own folder first. If `bd` is unavailable (cloud or thread sessions), say so in the first reply instead of skipping it — untracked PRs come from exactly those sessions.
 - **Research before you create.** Before filing a new issue — or building it — `bd search "<keywords>"` for existing or duplicate work (and, in a repo with PRs, `gh pr list --search "<keywords>"`). If it already exists, **link** (`--deps discovered-from:`/`related:`) or `bd supersede` instead of filing a duplicate; **abort** work that's already claimed or already has an open PR. (This is the beads "check before you build" discipline.)
 - **Create-time guard is `error`:** `validation.on-create=error` refuses a create missing its type's sections (task/feature: Acceptance; bug: Steps to Reproduce + Acceptance; epic: Success Criteria; chore: none). braynee sets it on init and `/braynee:health` repairs it. Always pass `--design` too — the guard can't require it, you must.
 - **A claim needs a plan:** braynee's claim gate runs `bd lint <id>` before `--claim` / `--status in_progress` and blocks an issue missing sections or still carrying the seeded-stub acceptance. Fill it (`bd update <id> --design … --acceptance …`), then claim. `bd mol pour` bypasses the create guard, so poured steps meet the gate at claim time.

@@ -8,7 +8,7 @@
 - Check DB schema before inserts; check logs before guessing deploy failures.
 - Stop and ask after 3 failed attempts with the same approach.
 - Blunt feedback = direction. "Yes"/"done" = proceed.
-- **Never estimate time.** Scope the work and start; carve phases if too big.
+- **Never estimate time.** Scope the work and start; carve phases if too big. Plans, briefs and checklists use ordered steps with plain headings, never durations or "Day 1 / Week 2".
 
 ## Search — QMD (mandatory)
 Never grep/find/Glob the vault — QMD is the only vault search tool (commands injected each turn by the QMD hook; detail in the `stack` rule). Use the whole tool, not just one mode: `search` for exact terms, structured `query` (`intent:`/`lex:`/`vec:`/`hyde:`, written by you) for concepts, then `get`/`multi-get` the source before stating a fact — hits are leads, not answers. Run 3+ angles for open-ended questions. Full doctrine: the `qmd` skill.

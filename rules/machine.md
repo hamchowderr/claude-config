@@ -7,7 +7,9 @@ Facts true only on this PC. Never packaged or shared. Check again after a tool u
 - `/` for paths in Node.js/npm. `\` in PowerShell.
 - Never use `tar` from Git Bash: it fails silently.
 - Git Bash ignores `PATHEXT`: bare commands resolve to `.exe`, never `.com`. Apps that ship a `.com` console shim (Obsidian) lose ALL stdout when called from it. Call the `.com` by full path, or use PowerShell.
-- Git Bash rewrites a leading-slash argument (`--path=/x`) into a Windows path. Run those commands from PowerShell.
+- Git Bash rewrites any argument that looks like an absolute POSIX path (`--path=/x`, `--value /app/dist`) into a Windows path, silently. Quoting does not stop it. Run those commands from PowerShell, or prefix `MSYS_NO_PATHCONV=1`.
+- Bash tool with `run_in_background`: never chain `cd <relative> && cmd`; the background shell drops the cwd and exits 0 silently. Use absolute paths.
+- Postgres in Docker: use `127.0.0.1` in the DSN, never `localhost` (IPv6 `::1` port-forward randomly resets: `read ECONNRESET`).
 
 ## Locations
 - Vault: `C:\Users\HamCh\Obsidian Vault`. The `obsidian` CLI needs Obsidian running.
