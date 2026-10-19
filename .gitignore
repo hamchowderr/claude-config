@@ -1,0 +1,13 @@
+# Track only the instruction and config layer. Everything else here is runtime state.
+/*
+!/.gitignore
+!/CLAUDE.md
+!/settings.json
+!/statusline.js
+!/rules/
+!/agents/
+!/hooks/
+!/scripts/
+*.bak*
+*-bak
+*.log

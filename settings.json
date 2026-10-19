@@ -1,0 +1,590 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "cleanupPeriodDays": 3650,
+  "skillListingBudgetFraction": 0.03,
+  "env": {
+    "FORCE_HYPERLINK": "1",
+    "CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD": "1",
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
+    "CLAUDE_CODE_FORK_SUBAGENT": "1",
+    "CLAUDE_CODE_HIDE_ACCOUNT_INFO": "1",
+    "CLAUDE_CODE_MAX_OUTPUT_TOKENS": "64000",
+    "CLAUDE_CODE_USE_POWERSHELL_TOOL": "1",
+    "ENABLE_CLAUDEAI_MCP_SERVERS": "false",
+    "GITHUB_OWNER": "HamChowderr",
+    "BEADS_ACTOR": "claude"
+  },
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch",
+      "Bash(bd *)",
+      "Bash(dolt *)",
+      "Bash(npm *)",
+      "Bash(npx *)",
+      "Bash(node *)",
+      "Bash(bun *)",
+      "Bash(pnpm *)",
+      "Bash(yarn *)",
+      "Bash(git *)",
+      "Bash(cat *)",
+      "Bash(dir *)",
+      "Bash(ls *)",
+      "Bash(grep *)",
+      "Bash(find *)",
+      "Bash(type *)",
+      "Bash(echo *)",
+      "Bash(mkdir *)",
+      "Bash(rm *)",
+      "Bash(cp *)",
+      "Bash(mv *)",
+      "Bash(cd *)",
+      "Bash(pwd)",
+      "Bash(code *)",
+      "Bash(python *)",
+      "Bash(pip *)",
+      "Bash(py *)",
+      "Bash(curl *)",
+      "Bash(wget *)",
+      "Bash(timeout *)",
+      "Bash(taskkill *)",
+      "Bash(netstat *)",
+      "Bash(findstr *)",
+      "Bash(cmd *)",
+      "Bash(xargs *)",
+      "Bash(start *)",
+      "Bash(docker *)",
+      "Bash(docker-compose *)",
+      "Bash(supabase *)",
+      "Bash(gh *)",
+      "Bash(playwright *)",
+      "Bash(vercel *)",
+      "Bash(wrangler *)",
+      "Bash(fly *)",
+      "Bash(railway *)",
+      "Bash(stripe *)",
+      "Bash(twitch *)",
+      "Bash(n8n *)",
+      "Bash(firebase *)",
+      "Bash(gcloud *)",
+      "Bash(aws *)",
+      "Bash(az *)",
+      "Bash(turbo *)",
+      "Bash(prisma *)",
+      "Bash(drizzle-kit *)",
+      "Bash(convex *)",
+      "Bash(powershell *)",
+      "Bash(powershell.exe *)",
+      "Bash(where *)",
+      "Bash(wc *)",
+      "Bash(robocopy *)",
+      "Bash(xcopy *)",
+      "Bash(tasklist *)",
+      "Bash(defuddle *)",
+      "Bash(cloudflared *)",
+      "Bash(obsidian *)",
+      "Bash(supertest *)",
+      "Bash(vitest *)",
+      "Bash(qmd *)",
+      "Bash(infisical *)",
+      "Bash(7z *)",
+      "Bash(unzip *)",
+      "Write",
+      "Skill(frontend-design:frontend-design)",
+      "PowerShell(bd *)",
+      "PowerShell(qmd *)",
+      "PowerShell(infisical secrets set:*)"
+    ],
+    "deny": [
+      "Read(./secrets/**)"
+    ],
+    "ask": [
+      "Bash(rm -rf *)",
+      "Bash(rm -r *)",
+      "Bash(rimraf *)",
+      "Bash(git reset --hard *)",
+      "Bash(git reset --hard)",
+      "Bash(git clean *)",
+      "Bash(git push --force *)",
+      "Bash(git push -f *)",
+      "Bash(git rebase *)",
+      "Bash(docker system prune *)",
+      "Bash(docker volume rm *)",
+      "Bash(docker rm -f *)",
+      "Bash(supabase db reset *)",
+      "Bash(supabase db reset)",
+      "Bash(vercel rm *)",
+      "Bash(vercel remove *)",
+      "Bash(npx prisma migrate reset *)",
+      "Bash(npx prisma migrate reset)"
+    ],
+    "defaultMode": "auto"
+  },
+  "skillOverrides": {
+    "stripe:test-cards": "off",
+    "stripe:explain-error": "off",
+    "keybindings-help": "off",
+    "statusline-setup": "off",
+    "init": "off",
+    "terminal-profile": "off",
+    "remotion-best-practices": "off",
+    "fewer-permission-prompts": "off",
+    "simplify": "off",
+    "plugin-dev:agent-development": "user-invocable-only",
+    "plugin-dev:skill-development": "user-invocable-only",
+    "plugin-dev:mcp-integration": "user-invocable-only",
+    "plugin-dev:plugin-settings": "user-invocable-only",
+    "plugin-dev:plugin-structure": "user-invocable-only",
+    "plugin-dev:command-development": "user-invocable-only",
+    "plugin-dev:hook-development": "user-invocable-only",
+    "review": "user-invocable-only",
+    "security-review": "user-invocable-only",
+    "update-config": "user-invocable-only",
+    "loop": "user-invocable-only",
+    "schedule": "user-invocable-only",
+    "heygen": "user-invocable-only",
+    "higgsfield-game-generation": "user-invocable-only",
+    "higgsfield-generate": "user-invocable-only",
+    "higgsfield-marketplace-cards": "user-invocable-only",
+    "higgsfield-product-photoshoot": "user-invocable-only",
+    "higgsfield-soul-id": "user-invocable-only",
+    "higgsfield-video-explainer": "user-invocable-only",
+    "higgsfield-websites": "user-invocable-only",
+    "embedded-captions": "user-invocable-only",
+    "faceless-explainer": "user-invocable-only",
+    "figma": "user-invocable-only",
+    "general-video": "user-invocable-only",
+    "hyperframes": "user-invocable-only",
+    "hyperframes-animation": "user-invocable-only",
+    "hyperframes-audio": "user-invocable-only",
+    "hyperframes-cli": "user-invocable-only",
+    "hyperframes-core": "user-invocable-only",
+    "hyperframes-creative": "user-invocable-only",
+    "hyperframes-keyframes": "user-invocable-only",
+    "hyperframes-registry": "user-invocable-only",
+    "media-use": "user-invocable-only",
+    "motion-graphics": "user-invocable-only",
+    "music-to-video": "user-invocable-only",
+    "pr-to-video": "user-invocable-only",
+    "product-launch-video": "user-invocable-only",
+    "remotion-to-hyperframes": "user-invocable-only",
+    "slideshow": "user-invocable-only",
+    "talking-head-recut": "user-invocable-only",
+    "captions-overlay": "user-invocable-only",
+    "changelog-video": "user-invocable-only",
+    "cut-the-curve": "user-invocable-only",
+    "motion-doctrine": "user-invocable-only",
+    "oversized-cursor": "user-invocable-only",
+    "seam-craft": "user-invocable-only",
+    "higgsfield-technique": "user-invocable-only"
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -ExecutionPolicy Bypass -File C:/Users/HamCh/.claude/hooks/claude-hook-toast.ps1",
+            "timeout": 10,
+            "async": true
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bd hooks install --force 2>/dev/null; exit 0",
+            "timeout": 30,
+            "statusMessage": "Healing beads...",
+            "async": true
+          }
+        ]
+      },
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node C:/Users/HamCh/.claude/hooks/vault-context-prime.js",
+            "timeout": 30,
+            "async": true
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node C:/Users/HamCh/bin/recent-projects.mjs --write",
+            "timeout": 30
+          },
+          {
+            "type": "command",
+            "command": "node C:/Users/HamCh/.claude/hooks/auto-stop-timers.js",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "InstructionsLoaded": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node C:/Users/HamCh/.claude/hooks/instructions-loaded.js",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node C:/Users/HamCh/.claude/hooks/check-docker.js",
+            "if": "Bash(supabase *)",
+            "timeout": 20
+          },
+          {
+            "type": "command",
+            "command": "node C:/Users/HamCh/.claude/hooks/check-workspace-safety.js",
+            "if": "Bash(rm *)",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node C:/Users/HamCh/.claude/hooks/env-secret-scanner.js",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node C:/Users/HamCh/.claude/hooks/permission-request.js",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PermissionDenied": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node C:/Users/HamCh/.claude/hooks/permission-denied.js",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node C:/Users/HamCh/.claude/hooks/auto-format.js",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node C:/Users/HamCh/.claude/hooks/check-dolt-status.js",
+            "if": "Write(*.sql)",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node C:/Users/HamCh/.claude/hooks/slow-tool-logger.js",
+            "timeout": 10,
+            "async": true
+          }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node C:/Users/HamCh/.claude/hooks/post-tool-failure.js",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node C:/Users/HamCh/.claude/hooks/subagent-start.js",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node C:/Users/HamCh/.claude/hooks/subagent-stop-check.js",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "TeammateIdle": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node C:/Users/HamCh/.claude/hooks/teammate-idle.js",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "ConfigChange": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node C:/Users/HamCh/.claude/hooks/config-change.js",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "CwdChanged": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node C:/Users/HamCh/.claude/hooks/cwd-changed.js",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "FileChanged": [
+      {
+        "matcher": ".env|.env.local",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node C:/Users/HamCh/.claude/hooks/file-changed-env.js",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -ExecutionPolicy Bypass -File C:/Users/HamCh/.claude/hooks/claude-hook-toast.ps1",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "StopFailure": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node C:/Users/HamCh/.claude/hooks/stop-failure.js",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Elicitation": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node C:/Users/HamCh/.claude/hooks/elicitation.js",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "ElicitationResult": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node C:/Users/HamCh/.claude/hooks/elicitation-result.js",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "node C:/Users/HamCh/.claude/statusline.js"
+  },
+  "enabledPlugins": {
+    "agent-sdk-dev@claude-plugins-official": false,
+    "commit-commands@claude-plugins-official": false,
+    "feature-dev@claude-plugins-official": false,
+    "frontend-design@claude-plugins-official": true,
+    "plugin-dev@claude-plugins-official": false,
+    "security-guidance@claude-plugins-official": false,
+    "stripe@claude-plugins-official": false,
+    "typescript-lsp@claude-plugins-official": true,
+    "vercel@claude-plugins-official": true,
+    "supabase@claude-plugins-official": true,
+    "beads@beads-marketplace": true,
+    "braynee@braynee": true,
+    "impeccable@impeccable": true,
+    "cloudflare@cloudflare": false,
+    "fivem@fivem-kit": false,
+    "engineering@synced": false,
+    "figma@synced": false,
+    "cowork-plugin-management@synced": false,
+    "skill-creator@claude-plugins-official": true,
+    "marketing@synced": false,
+    "product-management@synced": false,
+    "cloudflare@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "beads-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "gastownhall/beads"
+      }
+    },
+    "braynee": {
+      "source": {
+        "source": "github",
+        "repo": "hamchowderr/braynee"
+      }
+    },
+    "impeccable": {
+      "source": {
+        "source": "github",
+        "repo": "pbakaus/impeccable"
+      }
+    },
+    "cloudflare": {
+      "source": {
+        "source": "github",
+        "repo": "cloudflare/skills"
+      }
+    },
+    "fivem-kit": {
+      "source": {
+        "source": "directory",
+        "path": "C:\\Users\\HamCh\\code\\fivem-kit"
+      }
+    }
+  },
+  "outputStyle": "Proactive",
+  "viewMode": "verbose",
+  "alwaysThinkingEnabled": true,
+  "effortLevel": "xhigh",
+  "awaySummaryEnabled": true,
+  "autoUpdatesChannel": "latest",
+  "tui": "fullscreen",
+  "voice": {
+    "enabled": true,
+    "mode": "tap",
+    "autoSubmit": false
+  },
+  "prefersReducedMotion": false,
+  "autoMemoryDirectory": "C:/Users/HamCh/Obsidian Vault/2. Areas/Claude Memory",
+  "showThinkingSummaries": true,
+  "skipDangerousModePermissionPrompt": true,
+  "skipWorkflowUsageWarning": true,
+  "theme": "dark-daltonized",
+  "showTurnDuration": true,
+  "teammateMode": "in-process",
+  "inputNeededNotifEnabled": true,
+  "agentPushNotifEnabled": true,
+  "skipAutoPermissionPrompt": true,
+  "autoMode": {
+    "allow": [
+      "$defaults",
+      "Bash(bd:*) in this repo — routine task-tracker reads/writes per CLAUDE.md workflow",
+      "Bash(qmd:*) in this repo — mandatory vault search tool per CLAUDE.md, never grep/find/Glob the vault",
+      "Bash(obsidian:*) in this repo — required CLI for all vault file writes per CLAUDE.md"
+    ],
+    "soft_deny": [
+      "$defaults",
+      "Bash(infisical secrets:*) / Bash(infisical export:*) / Bash(infisical get:*) in this repo — CLAUDE.md explicitly forbids reading/printing secret values, only `infisical run` is sanctioned",
+      "Bash(git push origin main) / Bash(git push origin master) in this repo — CLAUDE.md mandates branch-based workflow, direct push to main/master is disallowed absent explicit override"
+    ],
+    "environment": [
+      "### Org-wide",
+      "**Organization**: None configured — this repo (`hamchowderr/obsidian-vault`) is a personal Obsidian vault; no company/org affiliation configured in tooling",
+      "**Cloud provider(s)**: None configured",
+      "**Repository visibility**: Private — hamchowderr/obsidian-vault (confirmed via gh)",
+      "**Internal sharing / snippet hosting**: None configured — treat public paste/gist services as outside the trust boundary",
+      "**Secrets management**: Infisical — inject at runtime only (`infisical run --path=/<project> --silent -- <cmd>`); never `infisical secrets/get/export`, never `--recursive`; never read or print secret values, confirm presence by mask only (type/length/first chars)",
+      "**Default / protected branches**: `main` (default). Protected branches: none listed via gh; Rulesets not queryable here — do not treat as unprotected on that basis. CLAUDE.md states: never push directly to `main`/`master`, always branch (`feature/`/`fix/`/`chore/`), with a stated exception for certain CC plugin repos (unverified provenance, repo-doc only — not adopted as a trust fact for this repo)",
+      "**CI/CD deploy targets**: None configured",
+      "**Network posture**: None configured",
+      "**Source control**: The trusted repo (hamchowderr/obsidian-vault) and its remote(s) only — no additional orgs configured",
+      "**Trusted internal domains**: None configured",
+      "**Trusted cloud buckets**: None configured",
+      "**Key internal services**: instatic.otakusolutions.io, sandbox.otakusolutions.io (config-derived — not a confirmed upload destination; uploads of local data still require confirmation)",
+      "**Internal package registry**: None configured",
+      "**Sensitive data locations & audiences**: Files/notes referencing secrets, credentials, and security topics — e.g. `2. Areas/Claude Memory/reference_infisical_secrets.md`, `2. Areas/Infrastructure/Infisical - Brokerboard secrets moved to Briggs org.md`, `2. Areas/Sessions/Agent Vault/2026 03 29 otaku secrets broker code.md`, and the numerous `2. Areas/TaskNotes/Tasks/*` items referencing secrets, credential rotation, and security incidents — preserve exact handles when known and share only with audiences cleared at the [named+specifics] bar",
+      "**Data retention / declassification**: None configured",
+      "**Sensitive remote targets**: any namespace, host, or container whose name carries `prod` or `production` as a whole word or name segment",
+      "**Protected deployment namespaces / environments**: None configured — fall back to the Sensitive remote targets heuristic",
+      "**Protected IaC scopes**: IAM, RBAC, networking, quota, and node-pool resources; anything whose name or tag carries `prod` or `production` as a whole word or name segment",
+      "### User-specific",
+      "**Primary use of Claude Code**: Personal knowledge-management / second-brain operations on an Obsidian vault (PARA + Zettelkasten pipeline: extract, connect, learn, process, rethink) plus software development via CLI-first tooling (bd, coolify, railway, stripe, infisical, gh)",
+      "**Trusted repo**: `C:\\Users\\HamCh\\Obsidian Vault`, remote `github.com/hamchowderr/obsidian-vault` (private) — confidential vault material (business, client, personal notes) is fine to commit/push here; secrets and credentials are never cleared into it regardless of visibility; content ported or first read from outside this session's repo is not this repo's own work",
+      "**Org-specific CLIs**: None configured — routine non-standard CLIs observed in this project: `bd` (beads task tracker), `obsidian` (vault CLI), `qmd` (mandatory vault search), `coolify`, `railway`, `gws`, `wsl`, `higgsfield`, `infisical`",
+      "routine under Zettelkasten/, Inbox/, 2. Areas/Ops/ prefixes for vault pipeline operations (extract/connect/update/verify/pipeline/process)"
+    ]
+  },
+  "voiceEnabled": true
+}
