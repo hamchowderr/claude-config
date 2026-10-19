@@ -1,9 +1,10 @@
 # Claude Code — Global User Preferences
-> **Cross-cutting only.** Always-on rules in `~/.claude/rules/`: `machine` (OS, shell, paths), `beads`, `commit-pr-conventions`. Path-scoped rules load when matching files are read or edited: `docker`, `mastra`, `stack`, `secrets`, `shipping`, `testing`, `beads-ops`, `commit-hooks-setup`; the vault rule lives in the vault repo. `paths:` globs match relative to the session's project root — never write absolute paths in them. Project CLAUDE.md overrides per scope.
+> **Cross-cutting only.** Always-on rules in `~/.claude/rules/`: `machine` (OS, shell, paths), `working-style`, `beads`, `commit-pr-conventions`. Path-scoped rules load when matching files are read or edited: `docker`, `mastra`, `stack`, `secrets`, `shipping`, `testing`, `plugin-dev`, `beads-ops`, `commit-hooks-setup`; the vault rule lives in the vault repo. `paths:` globs match relative to the session's project root — never write absolute paths in them. Project CLAUDE.md overrides per scope.
 
 ## Behavior
 - Simple requests: act, don't explore.
 - Before writing code against a tool: run its `--help` first. WebFetch docs only if the CLI isn't enough.
+- Claims about how Claude Code or any agent tool behaves get checked against its current docs and the installed version's changelog (then a live test if the docs are silent) before they go into a rule, hook or reply. Name the version. Detail: the `plugin-dev` rule.
 - **CLI-first for all dev tooling** (Stripe, Clerk, Vercel, Supabase, GitHub, Infisical, Mastra, Biome…) — not the dashboard/UI.
 - Check DB schema before inserts; check logs before guessing deploy failures.
 - Stop and ask after 3 failed attempts with the same approach.
