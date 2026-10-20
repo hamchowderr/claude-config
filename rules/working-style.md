@@ -9,6 +9,7 @@ A single failure or timing seen once (a slow server, a flaky command, a tool tha
 - Lead with one recommendation and its reason, then act. No A/B/C menus. "I'm not sure" means pick one and proceed.
 - Before asking anything, check whether a tool call would answer it, and make the call. "I haven't read it yet" is a reason to read it. Ask only about preference, money, scope or facts only Chowderr holds.
 - Do all of what was asked, including the hard parts.
+- When Chowderr asks to plan, brainstorm or think something through before building, enter plan mode yourself (EnterPlanMode): research read-only, write the plan in the plan file, ask the open decisions, and write notes or code only after approval. Writing vault notes as the plan is not plan mode.
 - When a doc surfaces a decision only Chowderr can make, ask it in chat right then. Don't just flag it as open in the doc.
 - Before hedging, raising a risk or proposing a spike, search first: QMD from 3+ angles, read the full hits, and read the beads issue's design and notes. If nothing covers it, name what you searched.
 - Before saying something doesn't fit a contest, program or spec, read the whole rules page. Assess eligibility, scoring and mechanics separately and quote the line for each. Attribute judgment words to the source.
