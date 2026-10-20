@@ -22,6 +22,7 @@ Facts true only on this PC. Never packaged or shared. Check again after a tool u
 
 ## Known local limits
 - `mastra dev` hangs: use `mastra build` + start.
+- agent-browser headed (0.31.1, Chrome for Testing 150, checked 2026-10-20): Chrome opens its own blank "New Tab" window on top of the window agent-browser drives, so Chowderr sees white windows. `"args": "--no-startup-window"` in `~/.agent-browser/config.json` leaves only the driven window. The window opens behind the terminal; it does not take focus.
 - Agent Vault through Windows curl needs `-k --proxy-insecure` (or run it from WSL). Recipe in the `secrets` rule.
 
 ## Deleting or renaming old project folders
