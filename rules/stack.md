@@ -45,7 +45,7 @@ Default auth provider is Clerk. Use Clerk's CLI / SDK setup — don't hand-roll 
 ## Databases — separate layers, pick by need
 Dolt and Supabase/Convex are not interchangeable; they solve different problems.
 
-- **Dolt** — version-controlled SQL (MySQL-compatible; `branch`/`diff`/`merge`/`commit` on data). Use when you need data history, audit trails, lineage, or reproducible state. Default data/state layer for LLM/agent builds (Beads itself runs on Dolt). `dolt add` + `dolt commit` after every schema/data change. DoltHub owner: the personal `chowderr` namespace (push to `chowderr/<db>`); the `otaku-solutions` org did not resolve when checked on 2026-07-15 (HTTP 400). DoltHub Pro is on, so private repos work.
+- **Dolt** — version-controlled SQL (MySQL-compatible; `branch`/`diff`/`merge`/`commit` on data). Use when you need data history, audit trails, lineage, or reproducible state. Default data/state layer for LLM/agent builds (Beads itself runs on Dolt). `dolt add` + `dolt commit` after every schema/data change. DoltHub owner: `chowderr` (push to `chowderr/<db>`). Checked 2026-10-20: `chowderr/foreman`, `chowderr/brokerboard` and `chowderr/waas` live there, and DoltHub has no owner named `otaku-solutions`. DoltHub Pro is on, so private repos work.
 - **DoltHub has two credentials, and they are not interchangeable.** The dolt CLI creds (`dolt creds ls`, about 52 characters; Infisical `DOLTHUB_API_KEY` / `DOLT2_API_KEY`) only push and pull data; used as a web API token they return `invalid authorization header`. The web API token (Infisical prod `/shared`, `DOLTHUB_API_TOKEN`) creates and deletes repos.
 - **Create a DoltHub repo from the CLI, never the web UI** (verified 2026-10-09):
   ```bash
