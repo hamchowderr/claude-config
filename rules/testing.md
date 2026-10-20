@@ -24,6 +24,12 @@ Pyramid: lots of Vitest → some Supertest → few Playwright; AIMock alongside 
 - **Tier 2 — live DB:** `npx supabase start`, then the live config; auto-skip when Supabase unreachable.
 - **Tier 3 — live server / protocols (A2A, MCP):** build + start; tests auto-detect & skip otherwise.
 - **Tier 4 — real external SDK / API:** gated behind explicit creds; provide read-only (safe) vs write (side-effect) variants.
+  - Paid live tests use dedicated test keys whose spend limit the provider enforces, never production keys, because a hand-rolled call counter in test code is a spend guard that can fail with real money.
+  - Keep them in a separate Infisical path `/<project>-live-tests` (otaku-internal, env `dev`) with the same variable names the app reads, and run `infisical run --path=/<project>-live-tests --silent -- <cmd>` so tests cannot reach production keys or databases.
+  - AI Gateway key: `vercel ai-gateway api-keys create --name <project>-tests --budget <usd> --refresh-period monthly --scope <team>`, captured and written to Infisical in the same command (the value prints once), printing only its length. Check budget for free with `GET https://ai-gateway.vercel.sh/v1/credits`. Firecrawl: the user creates the key with a monthly credit limit (dashboard only) and pastes it into the Infisical placeholder.
+  - Tests count calls for the report only; the provider limit is the hard stop. No "refuse past N" logic.
+  - A live run inside those monthly limits needs no per-run approval. A higher limit or production keys still needs the user's OK.
+  - Starting limits (2026-09-28): $10/month AI Gateway, 1,000 Firecrawl credits/month. Offer the same budget cap when a demo goes public.
 - **E2E (Playwright):** `npm run test:e2e` against a running app, with AIMock serving any LLM calls.
 
 Real API keys are the **last** tier, never the first — exercise the whole pipeline before spending money.
