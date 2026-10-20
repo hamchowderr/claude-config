@@ -12,7 +12,7 @@
 - **Never estimate time.** Scope the work and start; carve phases if too big. Plans, briefs and checklists use ordered steps with plain headings, never durations or "Day 1 / Week 2".
 
 ## Search — QMD (mandatory)
-Never grep/find/Glob the vault — QMD is the only vault search tool (commands injected each turn by the QMD hook; detail in the `stack` rule). Use the whole tool, not just one mode: `search` for exact terms, structured `query` (`intent:`/`lex:`/`vec:`/`hyde:`, written by you) for concepts, then `get`/`multi-get` the source before stating a fact — hits are leads, not answers. Run 3+ angles for open-ended questions. Full doctrine: the `qmd` skill.
+Never grep/find/Glob the vault — QMD is the only vault search tool (commands injected each turn by the QMD hook; detail in the `stack` rule). Use the whole tool, not just one mode: `search` for exact terms, structured `query` (`intent:`/`lex:`/`vec:`/`hyde:`, written by you) for concepts, then `get`/`multi-get` the source before stating a fact — hits are leads, not answers. Run 3+ angles for open-ended questions. Handed an exact note name: open it, no search. `query` spends 20–30 s on expansion, so plain lookups use `search`; never pipe qmd through `head`/`tail`. Full doctrine: the `qmd` skill.
 
 ## Vault
 Never Write/Edit vault files directly — use the `obsidian` CLI. Full pattern, including the eval recipe, in the vault repo's `vault` rule.
