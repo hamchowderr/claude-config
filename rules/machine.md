@@ -18,6 +18,7 @@ Facts true only on this PC. Never packaged or shared. Check again after a tool u
 - QMD wrapper: `~/.claude/scripts/qmd-wrapper.mjs`.
 - Workspace junctions in `C:\Users\HamCh\code\workspace\` point to real project roots. Manage them ONLY with `workspace-swap.ps1`; never `rm`, `rmdir`, `mv`, `cp` or `git rm` on them.
 - Dolt used by beads: `C:\Users\HamCh\bin\dolt.exe` (2.1.8 as of 2026-06-18), not the winget `DoltHub.Dolt` 1.86.4, which beads never uses (that copy is why `winget upgrade` nags; removing it needs an elevated shell). No self-update: `gh release download vX.Y.Z --repo dolthub/dolt --pattern "*windows-amd64.zip"`, stop every `dolt.exe`, overwrite `~/bin/dolt.exe`, check `dolt version`, smoke-test with `bd list`, delete the old copy.
+- NCA Toolkit: the instance on the VPS. Never start Docker Desktop or the local `nca-content-workflows` stack for it. Call it from PowerShell with `infisical run --projectId e56e0da5-6460-4bab-bdd6-2fd12ac5447b --env dev --path=/nca-toolkit --silent -- <cmd>` (keys `NCA_BASE_URL`, `NCA_PUBLIC_URL`, `NCA_API_KEY` sent as `x-api-key`, `APIFY_API_TOKEN`).
 - Hostinger VPS SSH key: `C:/Users/HamCh/.ssh/vps_hostinger` (`.pub` beside it). Test: `ssh -i C:/Users/HamCh/.ssh/vps_hostinger root@191.101.15.236 "hostname"`.
 
 ## Known local limits
