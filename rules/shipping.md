@@ -16,7 +16,7 @@ inject secrets via `infisical run` / Agent Vault — never print or paste values
 
 ## Phases (in order)
 1. **Local build** — scaffold per `dev-defaults` (Next.js / Mastra); `biome check` clean; builds.
-2. **Local test gate (pre-commit)** — Tier 1: Vitest + Supertest, fully mocked, **AIMock** at the LLM boundary. Green before any commit. (`testing-tiers.md`)
+2. **Local test gate (pre-commit)** — Tier 1: Vitest + Supertest, fully mocked, **AIMock** at the LLM boundary. Green before any commit. (`testing` rule)
 3. **Repo** — `gh repo create <name> --private`; work a `feature/*` branch. Never commit to main.
 4. **Link** — `vercel link` (+ `vercel git connect` to wire the repo).
 5. **Env vars** — `vercel env add <NAME> production|preview|development` across all three scopes; values from Infisical/Agent Vault.
