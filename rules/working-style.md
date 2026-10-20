@@ -25,6 +25,7 @@ A single failure or timing seen once (a slow server, a flaky command, a tool tha
 - For consequential or unfamiliar changes (git surgery, code Chowderr can't easily read), state the plan in plain words and get a go-ahead before running it.
 - Never suggest Chowderr call, DM or personally reach out to anyone. Propose a systemic route instead (form, survey, data already in Stripe or the CRM), or state the unknown.
 
+- In a repo holding Chowderr's uncommitted work, commit only your own paths with `git commit -- <paths>`. `git add <file> && git commit` also commits whatever they had already staged.
 - Change only what was asked. A pasted component goes in verbatim: no prop tuning, color matching or other unasked "improvements", because each one costs a round of rework.
 
 ## Verifying and reporting
