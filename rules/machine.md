@@ -17,7 +17,15 @@ Facts true only on this PC. Never packaged or shared. Check again after a tool u
 - shadcn UI Kit catalog: `C:\Users\HamCh\Code\shadcn-ui-kit`.
 - QMD wrapper: `~/.claude/scripts/qmd-wrapper.mjs`.
 - Workspace junctions in `C:\Users\HamCh\code\workspace\` point to real project roots. Manage them ONLY with `workspace-swap.ps1`; never `rm`, `rmdir`, `mv`, `cp` or `git rm` on them.
+- Dolt used by beads: `C:\Users\HamCh\bin\dolt.exe` (2.1.8 as of 2026-06-18), not the winget `DoltHub.Dolt` 1.86.4, which beads never uses (that copy is why `winget upgrade` nags; removing it needs an elevated shell). No self-update: `gh release download vX.Y.Z --repo dolthub/dolt --pattern "*windows-amd64.zip"`, stop every `dolt.exe`, overwrite `~/bin/dolt.exe`, check `dolt version`, smoke-test with `bd list`, delete the old copy.
+- Hostinger VPS SSH key: `C:/Users/HamCh/.ssh/vps_hostinger` (`.pub` beside it). Test: `ssh -i C:/Users/HamCh/.ssh/vps_hostinger root@191.101.15.236 "hostname"`.
 
 ## Known local limits
 - `mastra dev` hangs: use `mastra build` + start.
 - Agent Vault through Windows curl needs `-k --proxy-insecure` (or run it from WSL). Recipe in the `secrets` rule.
+
+## Deleting or renaming old project folders
+Three different locks all show as `Device or resource busy` / `is in use`. Close every editor that ever opened the folder first.
+- **Orphan `dolt sql-server`** from an old `bd init`, on a non-standard port (3308, 3309): find it with `Get-CimInstance Win32_Process -Filter "Name='dolt.exe'" | Select-Object ProcessId, CommandLine`, then `Stop-Process -Id <PID> -Force`.
+- **Empty directory left after a large delete** (`handle.exe` finds no handles): Defender or an editor watcher holds it at the filter-driver level. Wait, then try an elevated `Remove-Item -LiteralPath <path> -Recurse -Force`, else leave it until reboot; it takes no space.
+- **This Claude Code session's own watch handle** (`handle.exe` shows `claude.exe`): any folder this session touched stays locked until the session ends, and child shells inherit it. Expect renames of inspected folders to fail; ask the user to run the rename or delete from a separate terminal. Never kill `claude.exe` or force-close its handle.

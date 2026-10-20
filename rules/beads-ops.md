@@ -64,6 +64,25 @@ Agent-Signature: claude-code-opus-4.8-high on behalf of <git user.name>
 Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>
 ```
 
+## issues.jsonl and git — untrack it
+Since bd 1.1.0 the Dolt DB is the source of truth and `.beads/issues.jsonl` is a disposable export. The `merge=beads` driver is gone, so a tracked jsonl conflicts on merges, and bd stages it into the index, which blocks `git checkout`. Untrack it in every bd project (verified on chowderr.dev 2026-07-15):
+```bash
+bd config set export.auto true        # keeps the on-disk jsonl fresh for braynee's read hooks
+                                      # leave export.git-add false, so bd never re-stages it
+git rm --cached .beads/issues.jsonl   # file stays on disk
+# add .beads/issues.jsonl to the repo ROOT .gitignore (bd doctor --fix rewrites .beads/.gitignore)
+git commit -m "chore(beads): stop tracking issues.jsonl; sync via Dolt remote"
+```
+- Set up and prove the Dolt remote first (`bd dolt remote add origin chowderr/<db>`, `bd dolt push`, compare `bd sql "SELECT COUNT(*) FROM issues"` with the DoltHub SQL API); the tracked jsonl was the only off-machine copy. Never use `merge=union`: it produces invalid JSONL.
+- Fresh clones need `bd dolt pull` before the jsonl rebuilds.
+- In a repo not yet fixed, a checkout blocked on the jsonl clears with `git restore --staged --worktree .beads/` (`git checkout -- .beads/` misses the index). Safe on bd ≥ 1.1.0, because the jsonl no longer overwrites newer Dolt state.
+
+## Dolt remote on an app repo — blank the info branch
+A `git+https://github.com/<org>/<app-repo>.git` Dolt remote force-pushes a `__dolt_remote_info__` branch on every `bd dolt push`. On a Vercel-connected repo each push starts a deployment that the Ignored Build Step cancels, and cancelled ones still count toward Hobby's 100 deployments per day (103 of 149 on one repo, 2026-09-13; `git.deploymentEnabled` can't help, the branch has no `vercel.json`).
+- Fix: `DOLT_REMOTE_INFO_BRANCH` set blank. On Windows it is a **User** environment variable holding one space, because an empty string deletes the variable. Present in Dolt 2.1.8 (sql-server) and bd 1.2.1 (embedded); verified 2026-09-14.
+- Only processes started afterwards see it: restart terminals and Claude Code, or export it per command in an older session.
+- Delete the old `__dolt_remote_info__` branch from repos that still have it.
+
 ## Backups — configuring is not protecting
 
 Issue history lives in a local Dolt database. Without a recovery path, one

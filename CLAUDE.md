@@ -15,7 +15,7 @@
 Never grep/find/Glob the vault — QMD is the only vault search tool (commands injected each turn by the QMD hook; detail in the `stack` rule). Use the whole tool, not just one mode: `search` for exact terms, structured `query` (`intent:`/`lex:`/`vec:`/`hyde:`, written by you) for concepts, then `get`/`multi-get` the source before stating a fact — hits are leads, not answers. Run 3+ angles for open-ended questions. Full doctrine: the `qmd` skill.
 
 ## Vault
-Never Write/Edit vault files directly — use the `obsidian` CLI. Full pattern in the `vault` rule + [[feedback_obsidian_cli_eval_pattern]].
+Never Write/Edit vault files directly — use the `obsidian` CLI. Full pattern, including the eval recipe, in the vault repo's `vault` rule.
 
 ## Secrets (never expose values)
 Never read or print a secret value. Inject at runtime, never by reading the value into output. Confirm presence by MASK only (type/length/first chars). Full contract in the `secrets` rule.

@@ -14,7 +14,7 @@ decide everything: *"Is this trackable work?"* and *"Could I resume it in 2 week
 | **Personal / preference / reference / cross-project** knowledge | **vault** (Claude Memory / notes) |
 
 **Beads is for product work in this repo only.** Before `bd create`, ask: is this a
-change to the product in this repo? Vault chores, ops and personal housekeeping never
+change to the product in this repo? Vault chores, ops (account moves, migrations, cleanups) and personal housekeeping never
 become beads issues; do them, or tell the user. A slipped-in one: `bd delete <id> --force`.
 
 Don't put work in TodoWrite (it dies on compaction). Don't put insights or
@@ -74,5 +74,10 @@ names, private repos, or internal business context.
   `graph`, `epic`, `swarm`, `gate`, `provenance`, `federation`, `compact`, `flatten` and
   `gc`. Never conclude a capability is missing because it wasn't injected — run
   `bd --help`, then `bd <command> --help`, before hand-rolling anything beads already does.
+
+- **Work starts from beads**; Slack is secondary and GitHub Issues are never used. Judge any workflow or Factory design by the beads path first.
+- **The user's report beats the tracker.** When they say work is done, accept it: open issues lag shipped code. If you must verify, read the source, not `bd`, and offer to close stale issues rather than calling the work unfinished.
+- **Use all of beads.** Leaving out a feature (epics, labels, priority, comments, molecules) is the user's call: present it as a decision with the reason, never as a settled limitation.
+- Keep one visual board per repo with `/braynee:board`; republish it at every check-in (after seeding, PR opened, merge or close).
 
 Reference detail (Execution metadata, Agent commits, Backups) lives in `beads-ops.md`.
