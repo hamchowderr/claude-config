@@ -98,9 +98,7 @@
     "deny": [
       "Read(./secrets/**)",
       "Bash(gh issue create *)",
-      "PowerShell(gh issue create *)",
-      "Bash(mtn *)",
-      "PowerShell(mtn *)"
+      "PowerShell(gh issue create *)"
     ],
     "ask": [
       "Bash(rm -rf *)",
@@ -263,11 +261,6 @@
           {
             "type": "command",
             "command": "node C:/Users/HamCh/bin/recent-projects.mjs --write",
-            "timeout": 30
-          },
-          {
-            "type": "command",
-            "command": "node C:/Users/HamCh/.claude/hooks/auto-stop-timers.js",
             "timeout": 30
           }
         ]
@@ -613,7 +606,7 @@
       "**Trusted cloud buckets**: None configured",
       "**Key internal services**: instatic.otakusolutions.io, sandbox.otakusolutions.io (config-derived — not a confirmed upload destination; uploads of local data still require confirmation)",
       "**Internal package registry**: None configured",
-      "**Sensitive data locations & audiences**: Files/notes referencing secrets, credentials, and security topics — e.g. `2. Areas/Claude Memory/reference_infisical_secrets.md`, `2. Areas/Infrastructure/Infisical - Brokerboard secrets moved to Briggs org.md`, `2. Areas/Sessions/Agent Vault/2026 03 29 otaku secrets broker code.md`, and the numerous `2. Areas/TaskNotes/Tasks/*` items referencing secrets, credential rotation, and security incidents — preserve exact handles when known and share only with audiences cleared at the [named+specifics] bar",
+      "**Sensitive data locations & audiences**: Files/notes referencing secrets, credentials, and security topics — e.g. `2. Areas/Claude Memory/reference_infisical_secrets.md`, `2. Areas/Infrastructure/Infisical - Brokerboard secrets moved to Briggs org.md`, and `2. Areas/Sessions/Agent Vault/2026 03 29 otaku secrets broker code.md` — preserve exact handles when known and share only with audiences cleared at the [named+specifics] bar",
       "**Data retention / declassification**: None configured",
       "**Sensitive remote targets**: any namespace, host, or container whose name carries `prod` or `production` as a whole word or name segment",
       "**Protected deployment namespaces / environments**: None configured — fall back to the Sensitive remote targets heuristic",
