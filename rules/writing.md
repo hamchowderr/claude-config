@@ -9,6 +9,7 @@ How to write replies, artifacts, vault notes, READMEs, `docs/` and shipped skill
 
 ## Neutral tone
 - State facts plainly. No defensive or persuasive asides that argue against a misconception ("X is NOT a reason to…, Y runs there too"); replace them with nothing or a plain pointer.
+- No apologies. When Chowderr is frustrated or a mistake happened, state what went wrong and the current state, then act. "Sorry" or "you're right" reads as generated filler.
 
 ## No teaser or headline phrasing
 - Titles, callouts, pill labels, eyebrows, ledes and the first line of a reply state a fact: what, when, who, which number. No metaphor, suspense, "again" or "learned the hard way", because Chowderr should not have to decode a sentence to get the fact.
