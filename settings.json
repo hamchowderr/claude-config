@@ -619,11 +619,12 @@
       "$defaults",
       "Bash(bd:*) — routine beads task-tracker reads and writes",
       "Bash(qmd:*) — the mandatory vault search tool",
-      "Bash(obsidian:*) — the required CLI for vault file writes"
+      "Bash(obsidian:*) — the required CLI for vault file writes",
+      "PowerShell(infisical secrets set:*) / Bash(infisical secrets set:*) with --path=/locus in project e56e0da5-6460-4bab-bdd6-2fd12ac5447b — user-authorized writes of non-secret config values for Locus; the command must not read, list or print any existing secret value"
     ],
     "soft_deny": [
       "$defaults",
-      "Bash(infisical secrets:*) / Bash(infisical export:*) / Bash(infisical get:*) — never read or print secret values; only `infisical run` is sanctioned",
+      "Bash(infisical secrets:*) / Bash(infisical export:*) / Bash(infisical get:*) — never read or print secret values; only `infisical run` is sanctioned (exception: `infisical secrets set` on --path=/locus, see autoMode.allow)",
       "Bash(git push origin main) / Bash(git push origin master) in product repos — product work goes branch + PR + user merge. NOT a violation in: the Obsidian vault (hamchowderr/obsidian-vault), the user config repo (hamchowderr/claude-config), Claude Code plugin repos (braynee, beads, insightful), or a repair to agent tooling Claude broke (.mcp.json, hooks, scripts)"
     ],
     "environment": [
