@@ -1,5 +1,5 @@
 # Claude Code — Global User Preferences
-> **Cross-cutting only.** Always-on rules in `~/.claude/rules/`: `machine` (OS, shell, paths), `working-style`, `personal` (business facts), `writing`, `beads`, `commit-pr-conventions`. Path-scoped rules load when matching files are read or edited: `docker`, `mastra`, `stack`, `secrets`, `shipping`, `testing`, `frontend`, `wordpress`, `plugin-dev`, `beads-ops`, `commit-hooks-setup`; the vault rule lives in the vault repo. `paths:` globs match relative to the session's project root — never write absolute paths in them. Project CLAUDE.md overrides per scope.
+> **Cross-cutting only.** Always-on rules in `~/.claude/rules/`: `machine` (OS, shell, paths), `working-style`, `personal` (business facts), `writing`, `beads`, `commit-pr-conventions`, `skills` (add/update/remove skills). Path-scoped rules load when matching files are read or edited: `docker`, `mastra`, `stack`, `secrets`, `shipping`, `testing`, `frontend`, `wordpress`, `plugin-dev`, `beads-ops`, `commit-hooks-setup`; the vault rule lives in the vault repo. `paths:` globs match relative to the session's project root — never write absolute paths in them. Project CLAUDE.md overrides per scope.
 
 ## Behavior
 - Simple requests: act, don't explore.

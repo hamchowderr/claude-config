@@ -45,5 +45,5 @@ Check in this order (set up 2026-10-08):
 - `skillListingBudgetFraction` in `~/.claude/settings.json` caps the listing; past it skills show by name only and Claude never picks them. 0.02 dropped descriptions for about 50 skills; 0.03 shows all 147 in `fivem-kit`.
 - `user-invocable-only` skills (the video packs) are hidden from Claude by design.
 - Some plugins are off globally and enabled per repo in `.claude/settings.local.json` (FiveM, Cloudflare).
-- `npx skills add` installs to `~/.agents/skills/` and links into `~/.claude/skills/`, and can miss a link. A CLI that ships its own skill (agent-browser, apify-cli) needs a junction from `~/.claude/skills/` to its npm package folder, so the skill stays version-matched.
+- The skill is a stray copy or a missing link in `~/.claude/skills/`: see the `skills` rule.
 - To see what a session lists, run `claude -p` from the repo and ask it to list its skills (runs on the claude.ai login, not API credits).
