@@ -60,6 +60,8 @@
       "Bash(playwright *)",
       "Bash(vercel *)",
       "Bash(wrangler *)",
+      "PowerShell(npx --yes wrangler kv:*)",
+      "mcp__plugin_cloudflare_cloudflare__execute",
       "Bash(fly *)",
       "Bash(railway *)",
       "Bash(stripe *)",
