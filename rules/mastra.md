@@ -114,3 +114,13 @@ Scaffold new Mastra agents by forking `mastra-base` (`hamchowderr/mastra-base`);
 - Answer duplicates with "already done, move on". Count rejections per run as a health metric.
 
 → Vault: `2. Areas/Development/AI/Mastra/`
+
+## Agent build checklist — every agent ships with all of it
+An agent is not done until each line is true. Each came from a failure in a real build (Perry, 2026-11-03).
+1. **Identity.** Every person the agent serves is in a roster in code: Slack/user id, name, title, role. The instructions name who is asking. Never only an id-to-role map.
+2. **Grounded answers.** An agent that answers from knowledge or live pages must call a lookup tool before answering: `defaultOptions.prepareStep` returns `toolChoice: 'required'` with `activeTools` limited to the lookup tools on step 0. Instructions alone are not enough; Haiku answered from memory with them.
+3. **Memory per Mastra's current docs.** Observational memory on with thread scope and `retrieval` (resource scope is deprecated in `@mastra/memory`). Read the installed memory docs before configuring; check the boot log for deprecation warnings.
+4. **AIMock answer tests ship with the agent.** At least: the first step calls a lookup tool even with prior answers in memory; a real question answered from a fixture note with its source named; channel display settings asserted. No live model calls in tests.
+5. **Channel setup complete on day one** (Slack): agent mode (`agent_view` + `assistant:write`, adapter `agentView: true` and `loadingMessages`), events `app_mention`, `message.channels`, `message.im`, `app_home_opened`, `agent_session_stopped`, `agent_session_title_changed`, and `toolDisplay: 'hidden'` unless tool cards are wanted. Separate dev and prod apps.
+6. **Knowledge freshness.** Reindex interval of 1 minute or a sync-triggered reindex, never minutes of lag.
+7. **Prod is the goal.** Local runs are only for testing: hidden, detached, logged (see `working-style`). Deploy to the VPS before anyone uses the agent for business.
