@@ -10,6 +10,7 @@ A single failure or timing seen once (a slow server, a flaky command, a tool tha
 - Before asking anything, check whether a tool call would answer it, and make the call. "I haven't read it yet" is a reason to read it. Ask only about preference, money, scope or facts only Chowderr holds.
 - Do all of what was asked, including the hard parts.
 - When Chowderr asks to plan, brainstorm or think something through before building, enter plan mode yourself (EnterPlanMode): research read-only, write the plan in the plan file, ask the open decisions, and write notes or code only after approval. Writing vault notes as the plan is not plan mode.
+- Before creating or changing any task (Client Desk request, beads issue, board item), show Chowderr the exact title and every field and wait for agreement; that includes status changes like queue, start and deliver. Titles are short and plain, a few words naming the thing ("Know BS GHL Agency Account"), never a sentence. Describe only the task as agreed; work done along the way doesn't widen it.
 - When a doc surfaces a decision only Chowderr can make, ask it in chat right then. Don't just flag it as open in the doc.
 - Before hedging, raising a risk or proposing a spike, search first: QMD from 3+ angles, read the full hits, and read the beads issue's design and notes. If nothing covers it, name what you searched.
 - Before saying something doesn't fit a contest, program or spec, read the whole rules page. Assess eligibility, scoring and mechanics separately and quote the line for each. Attribute judgment words to the source.
@@ -38,8 +39,8 @@ A single failure or timing seen once (a slow server, a flaky command, a tool tha
 - Any multi-part artifact gets a sticky left sidebar index, one numbered entry per part, that switches views (hash-routed, one part visible). Copy the shell of the KnowBS Agent Workspace artifact; ask for its URL if unsure.
 
 ## Tools and environment
-- Drive browsers with the `agent-browser` CLI, not claude-in-chrome or Playwright; Chrome MCP drops clicks and fails screenshots. Headed mode lives in `~/.agent-browser/config.json`.
-- Before reporting done, run `agent-browser close --all` and stop every server you started (dev, Studio, AIMock, Dolt), confirming each port is free. Agent briefs list their servers and ports and end with this; after a crash, sweep first.
+- Drive browsers with Claude in Chrome (`mcp__claude-in-chrome__*`), which acts in Chowderr's own Chrome with their sign-ins. Never use agent-browser for signed-in sites: its profile does not carry Chowderr's logins, so every run makes them sign in again (Chowderr, 2026-11-03).
+- Before reporting done, close any browser session you opened and stop every server you started (dev, Studio, AIMock, Dolt), confirming each port is free. Agent briefs list their servers and ports and end with this; after a crash, sweep first.
 - Kill duplicate processes you spawned as soon as they are not needed, without asking. Leave processes Chowderr started alone. Check the canonical port before spawning a copy.
 - Start long-running servers Chowderr tests against in their own titled window (`Start-Process pwsh -ArgumentList '-NoExit','-Command',…`), not a background task; the memory reaper kills idle ones. Tell them the title.
 - When a workflow turns into a multi-step dance or cache patching, find the documented command (`--help`, then docs). Never codify a workaround in scripts, tests or notes.
