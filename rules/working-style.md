@@ -42,7 +42,7 @@ A single failure or timing seen once (a slow server, a flaky command, a tool tha
 - Drive browsers with Claude in Chrome (`mcp__claude-in-chrome__*`), which acts in Chowderr's own Chrome with their sign-ins. Never use agent-browser for signed-in sites: its profile does not carry Chowderr's logins, so every run makes them sign in again (Chowderr, 2026-11-03).
 - Before reporting done, close any browser session you opened and stop every server you started (dev, Studio, AIMock, Dolt), confirming each port is free. Agent briefs list their servers and ports and end with this; after a crash, sweep first.
 - Kill duplicate processes you spawned as soon as they are not needed, without asking. Leave processes Chowderr started alone. Check the canonical port before spawning a copy.
-- Start long-running servers Chowderr tests against in their own titled window (`Start-Process pwsh -ArgumentList '-NoExit','-Command',…`), not a background task; the memory reaper kills idle ones. Tell them the title.
+- Start long-running servers Chowderr tests against hidden and detached, never as pop-up windows: `Invoke-CimMethod Win32_Process Create` with `Win32_ProcessStartup` `ShowWindow=0`, output redirected to a log under `~/.claude/state/`, which you read instead of a window. Pop-up windows pile up and Chowderr closes them, taking the server down (2026-11-03). Tell them the log path.
 - When a workflow turns into a multi-step dance or cache patching, find the documented command (`--help`, then docs). Never codify a workaround in scripts, tests or notes.
 
 ## Code hygiene
