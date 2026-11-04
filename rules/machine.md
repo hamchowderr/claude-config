@@ -22,6 +22,7 @@ Facts true only on this PC. Never packaged or shared. Check again after a tool u
 - Hostinger VPS SSH key: `C:/Users/HamCh/.ssh/vps_hostinger` (`.pub` beside it). Test: `ssh -i C:/Users/HamCh/.ssh/vps_hostinger root@191.101.15.236 "hostname"`.
 
 ## Known local limits
+- Global npm is pinned to 10.9.9 on Node 24 on purpose (2026-11-03). npm 12.0.2 and 11.21.1 both dropped the nested `@bufbuild/protobuf` 2.x from `otaku-agents` package-lock.json, which breaks `npm ci` in CI; that repo enforces npm 10 with `engines` + `engine-strict`. Do not `npm i -g npm@latest`.
 - `mastra dev` hangs: use `mastra build` + start.
 - agent-browser headed (0.31.1, Chrome for Testing 150, checked 2026-10-20): Chrome opens its own blank "New Tab" window on top of the window agent-browser drives, so Chowderr sees white windows. `"args": "--no-startup-window"` in `~/.agent-browser/config.json` leaves only the driven window. The window opens behind the terminal; it does not take focus.
 - Agent Vault through Windows curl needs `-k --proxy-insecure` (or run it from WSL). Recipe in the `secrets` rule.
