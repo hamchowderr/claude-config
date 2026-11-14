@@ -48,7 +48,7 @@ async function hook() {
 // ---------- digest ----------
 function digest(file) {
   const lines = fs.readFileSync(file, 'utf8').split('\n');
-  let cwd = '', lastTitle = '', users = [], lastAssistant = '';
+  let cwd = '', lastTitle = '', users = [], lastAssistant = '', assistantCount = 0;
   for (const l of lines) {
     if (!l.trim()) continue;
     let o; try { o = JSON.parse(l); } catch { continue; }
@@ -61,11 +61,12 @@ function digest(file) {
       users.push(t.replace(/\s+/g, ' '));
     }
     if (o.type === 'assistant' && o.message) {
+      assistantCount++;
       const t = textOf(o.message.content).trim();
       if (t) lastAssistant = t.replace(/\s+/g, ' ').slice(0, 300);
     }
   }
-  return { cwd, lastTitle, users, lastAssistant };
+  return { cwd, lastTitle, users, lastAssistant, assistantCount };
 }
 
 // ---------- naming ----------
@@ -138,6 +139,17 @@ function nameOne(file, id, dry) {
   const d = digest(file);
   const mine = db[id];
   if (d.lastTitle && (!mine || mine.title !== d.lastTitle)) return log(`skip manual ${id} "${d.lastTitle}"`);
+  // Empty thread (no Claude reply and no user message beyond /clear-type commands): delete it.
+  if (!d.assistantCount && !d.users.some((m) => !isTrivialCmd(m))) {
+    if (dry) return console.log('(would delete: empty)');
+    const root = path.join(os.homedir(), '.claude', 'projects');
+    if (!path.resolve(file).startsWith(root + path.sep)) return log(`skip delete outside projects ${id}`);
+    fs.rmSync(file);
+    const side = path.join(path.dirname(file), id);
+    if (fs.existsSync(side)) fs.rmSync(side, { recursive: true });
+    const db2 = readJson(DB, {}); delete db2[id]; fs.writeFileSync(DB, JSON.stringify(db2));
+    return log(`deleted empty ${id}`);
+  }
   if (mine && mine.userCount === d.users.length) return log(`skip unchanged ${id}`);
   let title = deterministic(d);
   if (title === null) return log(`skip empty ${id}`);
