@@ -264,6 +264,11 @@
             "type": "command",
             "command": "node C:/Users/HamCh/bin/recent-projects.mjs --write",
             "timeout": 30
+          },
+          {
+            "type": "command",
+            "command": "node C:/Users/HamCh/.claude/scripts/thread-namer.mjs --hook",
+            "timeout": 5
           }
         ]
       }
